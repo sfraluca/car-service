@@ -14,10 +14,29 @@
    </head>
    <body>
        <div>Car Service</div>
-     <form action="/car" method="POST">
-     Name:<input type="text" name="search name"><input type="submit" value="Search">
-     </form>
-   
+ <table style="width:100%">
+  <tr>
+    <th>Id</th>
+    <th>PlateNumber</th> 
+    <th>Brand</th>
+    <th>Model</th>
+    <th>Year</th>
+    <th>Color</th>
+    <th>Year</th>
+    
+     {% for key in Car %}
+  <tr>
+    <td>{{ key.id }}</td>
+    <td>{{ key.plateNumber }}</td>
+    <td>{{ key.brand }}</td>
+    <td>{{ key.model }}</td>
+    <td>{{ key.year }}</td>
+    <td>{{ key.color }}</td>
+    <td>{{ key.type }}</td>
+    
+  </tr>
+  {% endfor %}
+ </table>
    </body>
    
 </html>

@@ -1,0 +1,29 @@
+AppBundle\Entity\car_service:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\car_serviceRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        price:
+            type: integer
+        description:
+            type: text
+        serviceDate:
+            type: datetime
+            column: service_date
+    lifecycleCallbacks: {  }
+    manyToOne:
+        car:
+            targetEntity: Car
+            inversedBy: car
+            joinColumn:
+                name: car_id
+                referencedColumnName: id
