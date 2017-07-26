@@ -3,7 +3,27 @@
 {% block title %}CarService{% endblock %}
 {% block style %}
 
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
+th, td {
+    text-align: left;
+    padding: 10px;
+    
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #af4c4c;
+    color: white;
+    
+}
+.ds{
+width:60%;
+}
 {% endblock %}
 {% block body %}
 
@@ -27,7 +47,7 @@
     <td>{{ key.id }}</td>
     <td>{{ key.title }}</td>
     <td>{{ key.price }}</td>
-    <td>{{ key.description }}</td>
+    <td class="ds">{{ key.description }}</td>
     <td>{{ key.serviceDate|date('Y-m-d H-i-s') }}</td> 
   </tr>
   {% endfor %}

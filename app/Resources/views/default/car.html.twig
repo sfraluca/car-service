@@ -3,6 +3,47 @@
 {% block title %}CarService{% endblock %}
 {% block style %}
 
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 5px;
+    
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #af4c4c;
+    color: white;
+    
+}
+.button2:hover {
+    box-shadow: 0 8px 13px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+a:link, a:visited {
+  color:white;
+   text-decoration: none;
+}
+.button {
+    background-color: #7a3535; /* Green */
+    border: none;
+    color: white;
+    padding: 7px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 3px 1px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius:10px;
+}
 
 {% endblock %}
 {% block body %}
@@ -23,6 +64,7 @@
     <th>Year</th>
     <th>Color</th>
     <th>Year</th>
+    <th>Services</th>
     
      {% for key in Car %}
   <tr>
@@ -33,7 +75,7 @@
     <td>{{ key.year }}</td>
     <td>{{ key.color }}</td>
     <td>{{ key.type }}</td>
-    
+     <th> <button class="button button2"><a href="/car/service/?nr={{key.plateNumber}}">Check services</a></button></th>
   </tr>
   {% endfor %}
  </table>

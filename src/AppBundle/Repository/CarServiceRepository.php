@@ -18,7 +18,6 @@ class CarServiceRepository extends \Doctrine\ORM\EntityRepository
                       ->createQuery(
                         'SELECT c, cs FROM AppBundle:CarService cs 
                         JOIN cs.car c 
-                        
                         WHERE c.plateNumber = :plate'
                         )->setParameter('plate', $carPlateNumber);
        
