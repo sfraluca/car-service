@@ -14,7 +14,7 @@ th, td {
     
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(even){background-color: #f2f2f2;}
 
 th {
     background-color: #af4c4c;
@@ -26,14 +26,14 @@ th {
 }
 
 a:link, a:visited {
-  color:white;
+   color:white;
    text-decoration: none;
 }
 .button {
-    background-color: #7a3535; /* Green */
+    background-color: #af4c4c; /* Green */
     border: none;
     color: white;
-    padding: 7px 10px;
+    padding: 5px 5px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -44,7 +44,15 @@ a:link, a:visited {
     transition-duration: 0.4s;
     border-radius:10px;
 }
-
+.div{
+text-align:center;
+font-size: 50px;
+font-family:Verdana;
+text-shadow: 2px 2px 5px red;
+padding:5px;
+margin-bottom:5px;
+color:#7a3535;
+}
 {% endblock %}
 {% block body %}
 
@@ -54,7 +62,7 @@ a:link, a:visited {
 
    </head>
    <body>
-       <div>Cars</div>
+       <div class="div">Car Service</div>
  <table style="width:100%">
   <tr>
     <th>Id</th>
@@ -75,10 +83,11 @@ a:link, a:visited {
     <td>{{ key.year }}</td>
     <td>{{ key.color }}</td>
     <td>{{ key.type }}</td>
-     <th> <button class="button button2"><a href="/car/service/?nr={{key.plateNumber}}">Check services</a></button></th>
+    <th class="button"> <button class="button button2"><a href="/car/service/?nr={{key.plateNumber}}">Check services</a></button></th>
   </tr>
   {% endfor %}
  </table>
+ <button class="button button2"><a href="/car/add">Add Car</a></button>
    </body>
    
 </html>
