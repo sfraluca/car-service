@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarService{% endblock %}
+{% block style %}
+
+
+{% endblock %}
+{% block body %}
+
+<html>
+    <head>
+           
+
+   </head>
+   <body>
+   <div>Car Service</div>
+ <table style="width:100%">
+  <tr>
+    <th>Id</th>
+    <th>Title</th> 
+    <th>Price</th>
+    <th>Description</th>
+    <th>Service Date</th>
+   
+   {% for key in viewServices %}
+  <tr>
+    <td>{{ key.id }}</td>
+    <td>{{ key.title }}</td>
+    <td>{{ key.price }}</td>
+    <td>{{ key.description }}</td>
+    <td>{{ key.serviceDate|date('Y-m-d H-i-s') }}</td> 
+  </tr>
+  {% endfor %}
+ </table>
+   </body>
+   
+</html>
+
+{% endblock %}
