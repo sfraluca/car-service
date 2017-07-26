@@ -3,12 +3,12 @@
 namespace AppBundle\Entity;
 
 /**
- * car_service
+ * CarService
  */
-class car_service
+class CarService
 {
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -18,7 +18,7 @@ class car_service
     private $title;
 
     /**
-     * @var int
+     * @var integer
      */
     private $price;
 
@@ -32,11 +32,16 @@ class car_service
      */
     private $serviceDate;
 
+    /**
+     * @var \AppBundle\Entity\Car
+     */
+    private $car;
+
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -48,7 +53,7 @@ class car_service
      *
      * @param string $title
      *
-     * @return car_service
+     * @return CarService
      */
     public function setTitle($title)
     {
@@ -72,7 +77,7 @@ class car_service
      *
      * @param integer $price
      *
-     * @return car_service
+     * @return CarService
      */
     public function setPrice($price)
     {
@@ -84,7 +89,7 @@ class car_service
     /**
      * Get price
      *
-     * @return int
+     * @return integer
      */
     public function getPrice()
     {
@@ -96,7 +101,7 @@ class car_service
      *
      * @param string $description
      *
-     * @return car_service
+     * @return CarService
      */
     public function setDescription($description)
     {
@@ -120,7 +125,7 @@ class car_service
      *
      * @param \DateTime $serviceDate
      *
-     * @return car_service
+     * @return CarService
      */
     public function setServiceDate($serviceDate)
     {
@@ -138,11 +143,29 @@ class car_service
     {
         return $this->serviceDate;
     }
-   private $car;
 
-    public function __construct()
+    /**
+     * Set car
+     *
+     * @param \AppBundle\Entity\Car $car
+     *
+     * @return CarService
+     */
+    public function setCar(\AppBundle\Entity\Car $car = null)
     {
-        $this->car = new ArrayCollection();
+        $this->car = $car;
+
+        return $this;
+    }
+
+    /**
+     * Get car
+     *
+     * @return \AppBundle\Entity\Car
+     */
+    public function getCar()
+    {
+        return $this->car;
     }
 }
 

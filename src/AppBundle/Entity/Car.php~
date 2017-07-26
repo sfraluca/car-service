@@ -45,14 +45,14 @@ class Car
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $carServices;
+    private $car_service;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->carServices = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->car_service = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -212,13 +212,13 @@ class Car
     /**
      * Add carService
      *
-     * @param \AppBundle\Entity\CarService $carService
+     * @param \AppBundle\Entity\car_service $carService
      *
      * @return Car
      */
-    public function addCarService(\AppBundle\Entity\CarService $carService)
+    public function addCarService(\AppBundle\Entity\car_service $carService)
     {
-        $this->carServices[] = $carService;
+        $this->car_service[] = $carService;
 
         return $this;
     }
@@ -226,12 +226,27 @@ class Car
     /**
      * Remove carService
      *
-     * @param \AppBundle\Entity\CarService $carService
+     * @param \AppBundle\Entity\car_service $carService
      */
-    public function removeCarService(\AppBundle\Entity\CarService $carService)
+    public function removeCarService(\AppBundle\Entity\car_service $carService)
     {
-        $this->carServices->removeElement($carService);
+        $this->car_service->removeElement($carService);
     }
+
+    /**
+     * Get carService
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCarService()
+    {
+        return $this->car_service;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $carServices;
+
 
     /**
      * Get carServices
@@ -243,4 +258,3 @@ class Car
         return $this->carServices;
     }
 }
-

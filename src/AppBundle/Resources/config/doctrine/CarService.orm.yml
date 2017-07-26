@@ -1,7 +1,7 @@
-AppBundle\Entity\car_service:
+AppBundle\Entity\CarService:
     type: entity
-    table: null
-    repositoryClass: AppBundle\Repository\car_serviceRepository
+    table: car_service
+    repositoryClass: AppBundle\Repository\CarServiceRepository
     id:
         id:
             type: integer
@@ -23,7 +23,7 @@ AppBundle\Entity\car_service:
     manyToOne:
         car:
             targetEntity: Car
-            inversedBy: car
+            inversedBy: carServices
             joinColumn:
                 name: car_id
                 referencedColumnName: id

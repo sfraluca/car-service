@@ -29,6 +29,6 @@ AppBundle\Entity\Car:
             length: 255
     lifecycleCallbacks: {  }
     oneToMany:
-        car_service:
-            targetEntity: car_service
-            mappedBy: car_service
+        carServices:
+            targetEntity: CarService
+            mappedBy: car
