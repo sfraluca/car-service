@@ -11,20 +11,18 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class CarServiceController extends Controller
-{
+class CarServiceController extends Controller {
+
     /**
      * @Route("/car/service/")
      */
- 
-
-   public function showAction(Request $request) {
+    public function showAction(Request $request) {
 
         $carPlateNumber = $request->query->get('nr', 'BH12NGT');
 
         $carServices = $this->getDoctrine()
-                            ->getRepository('AppBundle:CarService')
-                            ->findAllServicesByCarPlateNumber($carPlateNumber);
+                ->getRepository('AppBundle:CarService')
+                ->findAllServicesByCarPlateNumber($carPlateNumber);
         return $this->render('default/carservice.html.twig', array('viewServices' => $carServices));
 
 
@@ -49,13 +47,12 @@ class CarServiceController extends Controller
 //          . ''.$car->getPlateNumber().'</body></html>'
 //          );
     }
+
     /**
-     * @Route("/car/service/add")
+     * @Route("/car/service/add/", name="service")
      */
-   
-       
-    public function addServiceAction(Request $request)
-    {
+    public function addServiceAction(Request $request) {
+
         $service = new CarService();
         $service->setTitle('Write a title');
         $service->setPrice('Write a price');
@@ -63,22 +60,45 @@ class CarServiceController extends Controller
         $service->setServiceDate(new \DateTime('today'));
 
         $form = $this->createFormBuilder($service)
-            ->add('title', TextType::class)
-            ->add('price', TextType::class)
-            ->add('description', TextType::class)
-            ->add('serviceDate', DateType::class)
-            ->add('Submit', SubmitType::class, array('label' => 'Add Service'))
-            ->getForm();
+                ->add('title', TextType::class)
+                ->add('price', TextType::class)
+                ->add('description', TextType::class)
+                ->add('serviceDate', DateType::class)
+                ->add('Submit', SubmitType::class, array('label' => 'Add Service'))
+                ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // Get car object
+            $carPlateNumber = $request->query->get('nr', 'BH12NGT');
+            $car = $this->getDoctrine()
+                    ->getRepository('AppBundle:Car')
+                    ->findOneByPlateNumber($carPlateNumber);
+            
+            // Read form data
+            $title = $form['title']->getData();
+            $price = $form['price']->getData();
+            $description = $form['description']->getData();
+            $serviceDate = $form['serviceDate']->getData();
+
+            $service->setTitle($title);
+            $service->setPrice($price);
+            $service->setDescription($description);
+            $service->setServiceDate($serviceDate);
+            $service->setCar($car);
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($service);
+            $em->flush();
+            
+            return $this->redirectToRoute('back');
+        }
 
         return $this->render('default/addservice.html.twig', array(
-            'form' => $form->createView(),
+                    'form' => $form->createView(),
         ));
-
-        
     }
-       
-    
 
-    
 }
-

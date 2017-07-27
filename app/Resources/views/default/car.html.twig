@@ -5,12 +5,13 @@
 
 table {
     border-collapse: collapse;
-    width: 100%;
+width: 90%;
+    margin-left:50px;
 }
 
 th, td {
     text-align: left;
-    padding: 5px;
+    padding: 7px;
     
 }
 
@@ -33,7 +34,7 @@ a:link, a:visited {
     background-color: #af4c4c; /* Green */
     border: none;
     color: white;
-    padding: 5px 5px;
+    padding: 7px 7px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -43,6 +44,7 @@ a:link, a:visited {
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     border-radius:10px;
+    margin-left:50px;
 }
 .div{
 text-align:center;
@@ -52,6 +54,13 @@ text-shadow: 2px 2px 5px red;
 padding:5px;
 margin-bottom:5px;
 color:#7a3535;
+}
+.button1{
+margin-left:2px;
+}
+.th{
+background-color: #f2f2f2;
+color: white;
 }
 {% endblock %}
 {% block body %}
@@ -63,7 +72,7 @@ color:#7a3535;
    </head>
    <body>
        <div class="div">Car Service</div>
- <table style="width:100%">
+ <table>
   <tr>
     <th>Id</th>
     <th>PlateNumber</th> 
@@ -71,8 +80,9 @@ color:#7a3535;
     <th>Model</th>
     <th>Year</th>
     <th>Color</th>
-    <th>Year</th>
-    <th>Services</th>
+    <th>Type</th>
+    <th>Check</th>
+    <th>Add</th>
     
      {% for key in Car %}
   <tr>
@@ -83,7 +93,8 @@ color:#7a3535;
     <td>{{ key.year }}</td>
     <td>{{ key.color }}</td>
     <td>{{ key.type }}</td>
-    <th class="button"> <button class="button button2"><a href="/car/service/?nr={{key.plateNumber}}">Check services</a></button></th>
+    <th class="th"> <button class="button button2 button1"><a href="/car/service/?nr={{key.plateNumber}}">Check services</a></button></th>
+    <th class="th"> <button class="button button2 button1"><a href="/car/service/add/?nr={{key.plateNumber}}">Add Service</a></button></th> 
   </tr>
   {% endfor %}
  </table>

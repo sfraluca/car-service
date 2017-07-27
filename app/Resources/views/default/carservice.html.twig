@@ -16,6 +16,7 @@
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     border-radius:10px;
+    margin-left:50px;
 }
 .button2:hover {
     box-shadow: 0 8px 13px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
@@ -27,7 +28,8 @@ a:link, a:visited {
 }
 table {
     border-collapse: collapse;
-    width: 100%;
+    width: 90%;
+    margin-left:50px;
 }
 
 th, td {
@@ -65,7 +67,7 @@ color:#7a3535;
    </head>
    <body>
    <div class="div">Car Service</div>
- <table style="width:100%">
+ <table >
   <tr>
     <th>Id</th>
     <th>Title</th> 
@@ -79,13 +81,13 @@ color:#7a3535;
     <td>{{ key.title }}</td>
     <td>{{ key.price }}</td>
     <td class="ds">{{ key.description }}</td>
-    <td>{{ key.serviceDate|date('Y-m-d H-i-s') }}</td> 
+    <td>{{ key.serviceDate|date('Y-m-d H-i-s') }}</td>
   </tr>
   {% endfor %}
  
  </table>
   <button class="button button2"><a href="/car">Back Home</a></button>
-  <button class="button button2"><a href="/car/service/add">Add Service</a></button>
+  
    </body>
    
 </html>

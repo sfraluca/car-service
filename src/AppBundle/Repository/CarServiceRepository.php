@@ -13,8 +13,7 @@ use \Doctrine\ORM\Query;
 class CarServiceRepository extends \Doctrine\ORM\EntityRepository
 {
   public function findAllServicesByCarPlateNumber($carPlateNumber) {
-        $query = $this
-                      ->getEntityManager()
+        $query = $this->getEntityManager()
                       ->createQuery(
                         'SELECT c, cs FROM AppBundle:CarService cs 
                         JOIN cs.car c 

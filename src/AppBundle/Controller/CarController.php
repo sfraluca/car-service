@@ -14,7 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class CarController extends Controller
 {
     /**
-     * @Route("/car/")
+     * @Route("/car/", name="back")
      */
     public function productAction(Request $request) {
         // replace this example code with whatever you need
@@ -47,7 +47,31 @@ class CarController extends Controller
             ->add('type', TextType::class)
             ->add('Submit', SubmitType::class, array('label' => 'Add Car'))
             ->getForm();
+        
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+        $plateNumber=$form['plateNumber']->getData();
+        $brand=$form['brand']->getData();
+        $model=$form['model']->getData();
+        $year=$form['year']->getData();
+        $color=$form['color']->getData();
+        $type=$form['type']->getData();
+        
+        $car->setPlateNumber($plateNumber);
+        $car->setBrand($brand);
+        $car->setModel($model);
+        $car->setYear($year);
+        $car->setColor($color);
+        $car->setType($type);
+        
+        $em=$this->getDoctrine()->getManager();
+        $em->persist($car);
+        $em->flush();
+        
+        }
+        
         return $this->render('default/addcar.html.twig', array(
             'form' => $form->createView(),
         ));
